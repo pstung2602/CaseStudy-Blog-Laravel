@@ -7,23 +7,20 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <h1 style="text-align: center">Viết bài mới</h1>
-    <form action="{{route('posts.store')}}" method="post">
+    <h1 style="text-align: center">Sửa bài viết</h1>
+
+    <form action="{{route('users.update',$post->id)}}" method="post">
         @csrf
         <div class="container">
-        <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" name="title" >
-        </div>
             <div class="form-group">
-                <label>Image</label>
-                <input type="text" class="form-control" name="image" >
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="{{$post->title}}" >
             </div>
-        <div class="form-group">
-            <label >Content</label>
-            <textarea class="form-control" cols="30" rows="10" name="content"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label >Content</label>
+                <textarea class="form-control" cols="30" rows="10" name="content" >{{$post->content}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
 @endsection

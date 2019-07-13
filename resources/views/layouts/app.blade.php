@@ -22,6 +22,7 @@
             text-align: center;
             color: white;
         }
+
         header {
             background-color: #b5dbeb;
             padding: 30px;
@@ -34,80 +35,93 @@
 <body>
 <div id="app">
     <header>
-    <nav class="navbar navbar-expand-md ">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('posts.list')}}">
-                {{ 'Home' }}
-            </a>
-            <a class="navbar-brand" href="{{ route('users.list')}}">
-                {{ 'Authors' }}
-            </a>
-            <a class="navbar-brand" href="{{route('posts.create')}}">
-                {{ 'NewPost' }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-md ">
+            <div class="container" style="font-size: 30px">
+                <a class="navbar-brand" href="{{ route('posts.list')}}">
+                    {{ 'Home' }}
+                </a>
+                <a class="navbar-brand" href="{{ route('users.list')}}">
+                    {{ 'Authors' }}
+                </a>
+                <a class="navbar-brand" href="{{route('posts.create')}}">
+                    {{ 'NewPost' }}
+                </a>
+                <a class="navbar-brand" href="{{route('users.mypost')}}">
+                    {{ 'MyPost' }}
+                </a>
+                <form action="{{route('posts.search')}}" class="navbar-brand" method="get">
+                    @csrf
+                <input  name="search" placeholder="Search" style="width: 200px; height: 30px; background: whitesmoke " type="text"
+                       class="navbar-brand">
+                <button type="submit"   class="btn btn-outline-secondary" style="background:whitesmoke" >
+                    <i class="fa fa-search"></i>
+                </button>
+                </form>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <ul class="navbar-nav float-md-right " style="font-size: medium">
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav float-md-right " style="font-size: medium">
+                        @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a style="margin-left: 450px; font-size: 20px" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                            <div style="margin-left: 450px" class="dropdown-menu dropdown-menu-right"
-                                 aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a style="margin-left: 250px; font-size: 20px" id="navbarDropdown"
+                                   class="nav-link dropdown-toggle" href="#"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                   v-pre>
+                                    {{ Auth::user()->name }}
                                 </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+                                <div style="margin-left: 250px" class="dropdown-menu dropdown-menu-right"
+                                     aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </header>
 
     <main class="py-4">
         @yield('content')
         <footer>
-        <div class="container">
-            <hr>
-            <div class="text-center center-block">
-                <p class="txt-railway text-primary" style="font-size: 30px" >- Contact Us -</p>
-                <br />
-                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-                <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-                <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
-                <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+            <div class="container">
+                <hr>
+                <div class="text-center center-block">
+                    <p class="txt-railway text-primary" style="font-size: 30px">- Contact Us -</p>
+                    <br/>
+                    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb"
+                                                                    class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/bootsnipp"><i id="social-tw"
+                                                               class="fa fa-twitter-square fa-3x social"></i></a>
+                    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp"
+                                                                         class="fa fa-google-plus-square fa-3x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com"><i id="social-em"
+                                                            class="fa fa-envelope-square fa-3x social"></i></a>
+                </div>
+                <hr>
             </div>
-            <hr>
-        </div>
         </footer>
     </main>
 </div>

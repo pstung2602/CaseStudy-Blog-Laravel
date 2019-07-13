@@ -23,7 +23,7 @@
                 <th scope="row">{{++$key}}</th>
                 <td>{{$user->name}}</td>
                 <td >{{count($user->posts)}}</td>
-                <td><a href="#">Xem Chi Tiet</a></td>
+                <td><a href="{{route('users.authorpost',$user->id)}}">Xem Chi Tiet</a></td>
             </tr>
             </tbody>
             @endforeach

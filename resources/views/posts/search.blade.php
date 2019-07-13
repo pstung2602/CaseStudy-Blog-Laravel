@@ -15,24 +15,26 @@
                     <strong>Từ coder đến developer - Blog cho mọi người </strong><br>
                 </div>
             </div>
-
+            @if(isset($posts))
+                <h3>Tìm thấy {{count($posts)}} kết quả '{{$keyword}}'</h3>
             <div class="row">
-                @foreach($posts as $key => $post)
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" data-aos="fade-right">
-                        <div class="card text-center">
-                            <img class="card-img-top"
-                                 src="{{$post->image}}"
-                                 alt="" width="100%" height="250px">
-                            <div class="card-block">
-                                <h4 class="card-title">Tiêu đề: {{$post->title}}</h4>
-                                <p class="card-text">Tác giả: {{$post->user}}</p>
-                                ({{count(\App\Comment::where('post_id', $post->id)->get())}}) <span class="card-text">Ý kiến bạn đọc</span>
-                                <p class="card-text">Thời gian: {{$post->created_at}}</p>
-                                <a class="btn btn-primary" href="{{route('posts.view',$post->id)}}">Đọc Thêm</a>
+                    @foreach($posts as $post)
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" data-aos="fade-right">
+                            <div class="card text-center">
+                                <img class="card-img-top"
+                                     src="{{$post->image}}"
+                                     alt="" width="100%" height="250px">
+                                <div class="card-block">
+                                    <h4 class="card-title">Tiêu đề: {{$post->title}}</h4>
+                                    <p class="card-text">Tác giả: {{$post->user}}</p>
+                                    <p class="card-text">Thời gian: {{$post->created_at}}</p>
+                                    <a class="btn btn-primary" href="{{route('posts.view',$post->id)}}">Đọc thêm</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
+
             </div>
         </div>
     </div>
