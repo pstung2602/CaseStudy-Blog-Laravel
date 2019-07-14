@@ -14,14 +14,23 @@
         <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title" >
+            @if($errors->has('title'))
+                <p class="text-danger">{{$errors->first('title')}}</p>
+            @endif
         </div>
             <div class="form-group">
                 <label>Image</label>
                 <input type="text" class="form-control" name="image" >
+                @if($errors->has('image'))
+                    <p class="text-danger">{{$errors->first('image')}}</p>
+                @endif
             </div>
         <div class="form-group">
             <label >Content</label>
             <textarea class="form-control" cols="30" rows="10" name="content"></textarea>
+            @if($errors->has('content'))
+                <p class="text-danger">{{$errors->first('content')}}</p>
+            @endif
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>

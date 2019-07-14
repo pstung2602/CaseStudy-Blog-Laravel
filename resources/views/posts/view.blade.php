@@ -21,8 +21,9 @@
 
         <form action="{{route('posts.comment',$post->id)}}" method="POST">
             @csrf
-            <textarea name="comment" cols="150" rows="5" placeholder="Ý kiến của bạn"></textarea>
-            <button type="submit" style="margin-left:1152px; padding: 8px 24px;background: #9F224E;
+            <textarea name="comment" cols="136" rows="5" placeholder="Ý kiến của bạn"></textarea>
+            Vui long <a href="{{ route('login') }}">dang nhap</a> hoac <a href="{{ route('register') }}">dang ki </a> de binh luan
+            <button type="submit" style="margin-left:1045px; padding: 8px 24px;background: #9F224E;
     color: #fff !important;">Gui
             </button>
         </form>
