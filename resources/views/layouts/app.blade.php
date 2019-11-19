@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/blog.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style>
         footer {
             background-color: #b5dbeb;
@@ -35,18 +36,18 @@
 <body>
 <div id="app">
     <header>
-        <nav class="navbar navbar-expand-md ">
-            <div class="container" style="font-size: 30px">
-                <a class="navbar-brand" href="{{ route('posts.list')}}">
+        <nav class="navbar navbar-expand-md " >
+            <div class="container" >
+                <a  class="navbar-brand" href="{{ route('posts.list')}}">
                     {{ 'Home' }}
                 </a>
                 <a class="navbar-brand" href="{{ route('users.list')}}">
                     {{ 'Authors' }}
                 </a>
-                <a class="navbar-brand" href="{{route('posts.create')}}">
+                <a  class="navbar-brand" href="{{route('posts.create')}}">
                     {{ 'NewPost' }}
                 </a>
-                <a class="navbar-brand" href="{{route('users.mypost')}}">
+                <a  class="navbar-brand" href="{{route('users.mypost')}}">
                     {{ 'MyPost' }}
                 </a>
                 <form action="{{route('posts.search')}}" class="navbar-brand" method="get">
@@ -111,13 +112,13 @@
                 <div class="text-center center-block">
                     <p class="txt-railway text-primary" style="font-size: 30px">- Contact Us -</p>
                     <br/>
-                    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb"
+                    <a href="https://www.facebook.com/sontung.pham.106"><i id="social-fb"
                                                                     class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/bootsnipp"><i id="social-tw"
                                                                class="fa fa-twitter-square fa-3x social"></i></a>
                     <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp"
                                                                          class="fa fa-google-plus-square fa-3x social"></i></a>
-                    <a href="mailto:bootsnipp@gmail.com"><i id="social-em"
+                    <a href="mailto:pstung2602@gmail.com"><i id="social-em"
                                                             class="fa fa-envelope-square fa-3x social"></i></a>
                 </div>
                 <hr>

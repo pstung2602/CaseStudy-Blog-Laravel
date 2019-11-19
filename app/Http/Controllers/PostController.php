@@ -16,6 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view('posts.list', compact('posts', 'comments'));
+//        return response()->json($posts, 200);
     }
 
     public function view($id)
@@ -23,6 +24,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $comments = Comment::where('post_id', $post->id)->get();
         return view('posts.view', compact('post', 'comments'));
+//        return response()->json($post);
     }
 
     public function create()
@@ -34,7 +36,7 @@ class PostController extends Controller
     {
         $post = new Post();
         $post->user_id = Auth::id();
-        $post->user = Auth::user()->getName();
+        $post->user = Auth::user()->name;
         $post->title = $request->title;
         $post->image = $request->input('image');
         $post->content = $request->input('content');
@@ -57,7 +59,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $comment = new Comment();
         $comment->comment = $request->comment;
-        $comment->user = Auth::user()->getName();
+        $comment->user = Auth::user()->name;
         $comment->post_id = $post->id;
         $comment->user_id = Auth::id();
         $comment->save();

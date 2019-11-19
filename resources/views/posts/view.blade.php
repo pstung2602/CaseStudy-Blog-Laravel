@@ -7,16 +7,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
-        <h2 style="text-align: center">{{$post->title}}</h2>
+        <h2 style="text-align: center;color: #9F224E;">{{$post->title}}</h2>
         <strong>{{$post->created_at}}</strong><br>
-        <p>{{$post->content}}</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{$post->content}}</span><br>
         <img src="{{$post->image}}" width="40%" height="40%" style="margin-left: 330px">
         <h4 style="text-align: right; ">{{$post->user}}</h4>
         <p style="background: #eaeaea; color: #9d234c;">Ý kiến bạn đọc ({{count($comments)}})</p>
         @foreach($comments as $comment)
             <span>{{$comment->comment}}</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{$comment->user}} - {{$comment->created_at}}</span><br>
-            <hr>
+            <hr width="50%">
         @endforeach
 
         <form action="{{route('posts.comment',$post->id)}}" method="POST">

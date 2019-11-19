@@ -34,6 +34,7 @@ class UserController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->title = $request->input('title');
+        $post->image = $request->input('image');
         $post->content = $request->input('content');
         $post->save();
         return redirect()->route('users.mypost');

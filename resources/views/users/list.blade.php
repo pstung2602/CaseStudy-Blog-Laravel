@@ -22,8 +22,8 @@
             <tr>
                 <th scope="row">{{++$key}}</th>
                 <td>{{$user->name}}</td>
-                <td >{{count($user->posts)}}</td>
-                <td><a href="{{route('users.authorpost',$user->id)}}">Xem Chi Tiet</a></td>
+                <td style="position: fixed; left: 845px; ">{{count($user->posts)}}</td>
+                <td style="position: fixed; left: 1255px"><a href="{{route('users.authorpost',$user->id)}}">Xem Chi Tiet</a></td>
             </tr>
             </tbody>
             @endforeach
