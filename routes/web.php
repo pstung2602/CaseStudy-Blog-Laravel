@@ -32,4 +32,15 @@ Route::group(["middleware" => "auth"], function () {
     Route::post('/mypost/edit/{id}', 'UserController@update')->name('users.update');
     Route::get('/mypost/detroy/{id}', 'UserController@destroy')->name('users.destroy');
     Route::post('/blog/{id}', 'PostController@comment')->name('posts.comment');
+
+
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/','AdminController@posts')->name('admin.posts');
+        Route::get('/users','AdminController@users')->name('admin.users');
+    });
 });
+Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('facebook');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+

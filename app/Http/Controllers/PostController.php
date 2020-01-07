@@ -5,25 +5,26 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Http\Requests\CreateUserRequest;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.list', compact('posts', 'comments'));
+        $posts = Post::paginate(2);
+        return view('posts.list', compact('posts'));
 //        return response()->json($posts, 200);
     }
 
     public function view($id)
     {
         $post = Post::findOrFail($id);
-        $comments = Comment::where('post_id', $post->id)->get();
-        return view('posts.view', compact('post', 'comments'));
+        $comments = $post->comments;
+        $user = User::findOrFail($post->user_id);
+        return view('posts.view', compact('post', 'comments','user'));
 //        return response()->json($post);
     }
 

@@ -35,14 +35,14 @@
 </head>
 <body>
 <div id="app">
-    <header>
+    <header data-spy="scroll" data-target=".navbar" data-offset="50"  >
         <nav class="navbar navbar-expand-md " >
             <div class="container" >
                 <a  class="navbar-brand" href="{{ route('posts.list')}}">
-                    {{ 'Home' }}
+                    <i class="fa fa-home" aria-hidden="true"></i>
                 </a>
                 <a class="navbar-brand" href="{{ route('users.list')}}">
-                    {{ 'Authors' }}
+                    <i class="fa fa-user" aria-hidden="true"></i>
                 </a>
                 <a  class="navbar-brand" href="{{route('posts.create')}}">
                     {{ 'NewPost' }}
@@ -50,13 +50,10 @@
                 <a  class="navbar-brand" href="{{route('users.mypost')}}">
                     {{ 'MyPost' }}
                 </a>
-                <form action="{{route('posts.search')}}" class="navbar-brand" method="get">
+                <form class="form-inline mt-2 mt-md-0" action="{{route('posts.search')}}" method="get">
                     @csrf
-                <input  name="search" placeholder="Search" style="width: 200px; height: 30px; background: whitesmoke " type="text"
-                       class="navbar-brand">
-                <button type="submit"   class="btn btn-outline-secondary" style="background:whitesmoke" >
-                    <i class="fa fa-search"></i>
-                </button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
@@ -103,6 +100,7 @@
             </div>
         </nav>
     </header>
+
 
     <main class="py-4">
         @yield('content')
